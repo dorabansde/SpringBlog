@@ -17,6 +17,7 @@ import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -56,7 +57,9 @@ class BlogApiControllerTest {
         final String url = "/api/articles";
         final String title = "title";
         final String content = "content";
-        final AddArticleRequest userRequest = new AddArticleRequest(title, content);
+        final LocalDateTime createdAt = LocalDateTime.now();
+        final LocalDateTime updatedAt = LocalDateTime.now();
+        final AddArticleRequest userRequest = new AddArticleRequest(title, content, createdAt, updatedAt);
 
         // 객체 JSON으로 직렬화
         final String requestBody = objectMapper.writeValueAsString(userRequest);
