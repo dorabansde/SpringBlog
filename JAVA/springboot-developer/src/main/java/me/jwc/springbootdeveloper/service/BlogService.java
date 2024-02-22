@@ -20,7 +20,7 @@ public class BlogService {
     public Article save(AddArticleRequest request) {
 
         AddArticleRequest aar1 = new AddArticleRequest();
-        AddArticleRequest aar2 = new AddArticleRequest("제목1", "내용1");
+        AddArticleRequest aar2 = new AddArticleRequest();
 //        aar2.setContent("내용수정");
         AddArticleRequest aar3 = new AddArticleRequest();
         aar2.getContent();
@@ -45,7 +45,7 @@ public class BlogService {
         Article article = blogRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("not found: " + id));
 
-        article.update(request.getTitle(), request.getContent());
+        article.update(request.getTitle(), request.getContent(), request.getUpdatedAt());
 
         return article;
     }

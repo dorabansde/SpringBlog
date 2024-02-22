@@ -34,13 +34,16 @@ public class Article {
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
     @Builder // 빌더 패턴으로 객체 생성
-    public Article(String title, String content){
+    public Article(String title, String content, LocalDateTime createdAt, LocalDateTime updatedAt){
         this.title = title;
         this.content = content;
+        this.updatedAt = updatedAt;
+        this.createdAt = createdAt;
     }
 
-    public void update(String title, String content){
+    public void update(String title, String content, LocalDateTime updatedAt){
         this.title = title;
         this.content = content;
+        this.updatedAt = updatedAt;
     }
 }
